@@ -1,11 +1,12 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
+import { Link, router } from "expo-router";
 
 // Reusable Menu Item
 // @ts-ignore
-const MenuItem = ({ icon, label, color = "#292323" }) => (
-  <Pressable style={styles.menuItem}>
+const MenuItem = ({ icon, label, color = "#292323", onPress }) => (
+  <Pressable style={styles.menuItem} onPress={onPress}>
     <Ionicons name={icon} size={22} color={color} />
     <Text style={[styles.menuText, { color }]}>{label}</Text>
   </Pressable>
@@ -19,12 +20,25 @@ const Menu = () => {
       <Text style={styles.header}>Menu</Text>
 
       {/* Menu Items */}
-      <MenuItem icon="person-outline" label="Profile" />
-      <MenuItem icon="settings-outline" label="Settings" />
-      <MenuItem icon="information-circle-outline" label="About" />
-      <MenuItem icon="call-outline" label="Contact" />
-      <MenuItem icon="alert-circle-outline" label="Report a Problem" />
-      <MenuItem icon="log-out-outline" label="Logout" color="red" />
+      <MenuItem icon="person-outline" label="Profile" onPress={() => router.push("/stack/profile")} />
+      <MenuItem icon="settings-outline" label="Settings" onPress={undefined} />
+      <MenuItem
+        icon="information-circle-outline"
+        label="About"
+        onPress={undefined}
+      />
+      <MenuItem icon="call-outline" label="Contact" onPress={undefined} />
+      <MenuItem
+        icon="alert-circle-outline"
+        label="Report a Problem"
+        onPress={undefined}
+      />
+      <MenuItem
+        icon="log-out-outline"
+        label="Logout"
+        color="red"
+        onPress={() => router.push("/stack/login")}
+      />
     </View>
   );
 };
