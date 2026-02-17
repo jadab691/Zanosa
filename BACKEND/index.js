@@ -7,24 +7,24 @@ import cors from "cors";
 const PORT = 3000;
 
 const app = express();
-app.use(cors()); // Allow all origins for development
+app.use(cors()); 
 app.use(express.json());
 
 const server = createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "*", // allow any frontend
+    origin: "*", 
     methods: ["GET", "POST"],
   },
 });
 
 // Test route
 app.get("/", (req, res) => {
-  res.send("Chat server running 🚀");
+  res.send("server running ");
 });
 
-// Store messages (simple memory storage for testing)
+// Store messages 
 let messages = [];
 
 io.on("connection", (socket) => {
@@ -45,7 +45,7 @@ io.on("connection", (socket) => {
   });
 });
 
-// Listen on all interfaces
+// for my vangari mobile . samsung m10😂😂
 server.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
